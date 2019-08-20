@@ -8,8 +8,6 @@
     <Folder Include="Model\UseCases\" />
     <Folder Include="Model\Domains\" />
     <Folder Include="Model\Infrastructures\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
 
 </Project>
