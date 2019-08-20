@@ -4,7 +4,9 @@ using System.Text;
 
 namespace TDDTest.Core.ViewModel.IViewServices
 {
-    interface INavigationService
+    public interface INavigationService
     {
+        void Navigate(string nextViewModel);
+
     }
 }

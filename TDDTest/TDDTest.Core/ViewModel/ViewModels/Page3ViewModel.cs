@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TDDTest.Core.ViewModel.ViewModels
 {
-    class Page3ViewModel
+    public class Page3ViewModel
     {
     }
 }
