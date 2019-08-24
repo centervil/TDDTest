@@ -6,7 +6,7 @@ namespace TDDTest.Core.ViewModel.IViewServices
 {
     public interface INavigationService
     {
-        void Navigate(string nextViewModel);
+        bool Navigate(string nextViewModel);
 
     }
 }
