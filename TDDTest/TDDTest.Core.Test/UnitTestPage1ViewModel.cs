@@ -14,16 +14,20 @@ namespace TDDTest.Core.Test
         [TestMethod]
         public void ボタンを押したらPage2に遷移()
         {
-            var testMock = new Mock<INavigationService>();
+            //テスト準備
+            var NavigationServiceMock = new Mock<INavigationService>();
             Page2ViewModel vm2;
-            testMock
+
+            NavigationServiceMock
                 .Setup(nav => nav.Navigate(nameof(Page2ViewModel)))
                 .Returns(true)
-                .Callback(() => vm2 = new Page2ViewModel(testMock.Object));
-            //var navigationServiceMock = new NavigationServiceMock();
-            var vm = new Page1ViewModel(testMock.Object);
+                .Callback(() => vm2 = new Page2ViewModel(NavigationServiceMock.Object));
+
+            //テスト実行
+            var vm = new Page1ViewModel(NavigationServiceMock.Object);
             vm.NextButton.Execute();
-            //Assert.AreEqual(true, navigationServiceMock.nextPage);
+
+            //答え合わせ
             var navigationHistoryRepository = Singleton<NavigationHistoryRepository>.Instance;
             string nowPage = navigationHistoryRepository.History.Last();
             Assert.AreEqual(nameof(Page2ViewModel), nowPage);
@@ -31,17 +35,3 @@ namespace TDDTest.Core.Test
     }
 }
 
-//    internal class NavigationServiceMock : INavigationService
-//    {
-//        internal string nextPage = "";
-
-//        public NavigationServiceMock()
-//        {
-//        }
-
-//        public void Navigate(string v)
-//        {
-//            this.nextPage = v;
-//        }
-//    //}
-//}

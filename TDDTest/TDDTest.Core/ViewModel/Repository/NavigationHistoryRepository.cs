@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using TDDTest.Core.ViewModel.ViewModelServices;
 
 namespace TDDTest.Core.ViewModel.Repository
 {
@@ -7,14 +9,22 @@ namespace TDDTest.Core.ViewModel.Repository
     {
         public NavigationHistoryRepository()
         {
-            History = new List<string>();
+            History = new List<PageActivity>();
         }
 
-        public List<string> History { get; private set; }
+        public List<PageActivity> History { get; private set; }
 
-        internal void Store(string viewModelName)
+        internal void Store(PageActivity pageActivity)
         {
-            History.Add(viewModelName);
+            History.Add(pageActivity);
+        }
+        internal void Store(UserActivity userActivity)
+        {
+            History.Last().AddUserActivity(userActivity);
+        }
+        internal void Store(PageState pageState)
+        {
+            History.Last().AddPageState(pageState);
         }
     }
 }

@@ -1,6 +1,9 @@
-﻿using TDDTest.Core.Helpers;
+﻿using System;
+using System.Reflection;
+using TDDTest.Core.Helpers;
 using TDDTest.Core.ViewModel.IViewServices;
 using TDDTest.Core.ViewModel.Repository;
+using TDDTest.Core.ViewModel.ViewModelServices;
 
 namespace TDDTest.Core.ViewModel.ViewModels
 {
@@ -12,10 +15,16 @@ namespace TDDTest.Core.ViewModel.ViewModels
         public ViewModelBase(INavigationService navigationService)
         {
             this.navigationService = navigationService;
-            this.NextButton = new DelegateCommand(() => { this.navigationService.Navigate(nameof(Page2ViewModel)); });
+            this.NextButton = new DelegateCommand(() => GotoNextPage());
             this.navigationHistoryRepository.Store(this.GetType().Name);
         }
 
         public DelegateCommand NextButton { get; set; }
+        private void GotoNextPage()
+        {
+            this.navigationHistoryRepository.Store(MethodBase.GetCurrentMethod().Name);
+            string nextPage = RouteGuidanceService.GetNextPageName();
+            this.navigationService.Navigate(nextPage);
+        }
     }
 }
