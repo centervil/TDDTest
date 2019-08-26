@@ -8,6 +8,8 @@ namespace TDDTest.Core.ViewModel.ViewModelServices
         public PageActivity(string viewModelName)
         {
             this.ViewModelName = viewModelName;
+            this.UserActivityList = new List<UserActivity>();
+            this.PageStateList = new List<PageState>();
         }
 
         public void AddUserActivity(UserActivity userActivity)

@@ -15,14 +15,14 @@ namespace TDDTest.Core.ViewModel.ViewModels
         public ViewModelBase(INavigationService navigationService)
         {
             this.navigationService = navigationService;
-            this.NextButton = new DelegateCommand(() => GotoNextPage());
-            this.navigationHistoryRepository.Store(this.GetType().Name);
+            this.NextButton = new DelegateCommand(() => GotoNextPage(), nameof(this.NextButton));
+            this.navigationHistoryRepository.Store(new PageActivity(this.GetType().Name));
         }
 
         public DelegateCommand NextButton { get; set; }
         private void GotoNextPage()
         {
-            this.navigationHistoryRepository.Store(MethodBase.GetCurrentMethod().Name);
+            this.navigationHistoryRepository.Store(new UserActivity(this.NextButton.CommandName));
             string nextPage = RouteGuidanceService.GetNextPageName();
             this.navigationService.Navigate(nextPage);
         }

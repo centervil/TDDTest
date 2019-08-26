@@ -29,8 +29,8 @@ namespace TDDTest.Core.Test
 
             //ìöÇ¶çáÇÌÇπ
             var navigationHistoryRepository = Singleton<NavigationHistoryRepository>.Instance;
-            string nowPage = navigationHistoryRepository.History.Last();
-            Assert.AreEqual(nameof(Page2ViewModel), nowPage);
+            var nowPageActivity = navigationHistoryRepository.History.Last();
+            Assert.AreEqual(nameof(Page2ViewModel), nowPageActivity.ViewModelName);
         }
     }
 }

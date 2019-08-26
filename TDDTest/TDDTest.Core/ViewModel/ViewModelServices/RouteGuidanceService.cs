@@ -2,6 +2,7 @@
 using System.Linq;
 using TDDTest.Core.Helpers;
 using TDDTest.Core.ViewModel.Repository;
+using TDDTest.Core.ViewModel.ViewModels;
 
 namespace TDDTest.Core.ViewModel.ViewModelServices
 {
@@ -15,7 +16,17 @@ namespace TDDTest.Core.ViewModel.ViewModelServices
         }
         private static string DeriveNextPage(PageActivity pageActivity)
         {
-            return "";
+            string nextPage = "";
+            switch (pageActivity.ViewModelName)
+            {
+                case nameof(Page1ViewModel):
+                    if (pageActivity.UserActivityList.Last().CommandName == nameof(Page1ViewModel.NextButton))
+                        nextPage = nameof(Page2ViewModel);
+                    break;
+                default:
+                    break;
+            }
+            return nextPage;
         }
     }
 }

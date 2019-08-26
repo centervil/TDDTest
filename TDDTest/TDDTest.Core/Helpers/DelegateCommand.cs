@@ -12,11 +12,14 @@ namespace TDDTest.Core.Helpers
         private Action _execute;
         private Func<bool> _canExecute;
 
-        public DelegateCommand(Action execute) : this(execute, () => true)
+        public string CommandName { get; }
+
+        public DelegateCommand(Action execute, string commandName) : this(execute, () => true, commandName)
         {
         }
-        public DelegateCommand(Action execute, Func<bool> canExecute)
+        public DelegateCommand(Action execute, Func<bool> canExecute, string commandName)
         {
+            this.CommandName = commandName;
             _execute = execute;
             _canExecute = canExecute;
         }
