@@ -23,6 +23,14 @@ namespace TDDTest.Core.ViewModel.ViewModelServices
                     if (pageActivity.UserActivityList.Last().CommandName == nameof(Page1ViewModel.NextButton))
                         nextPage = nameof(Page2ViewModel);
                     break;
+                case nameof(Page2ViewModel):
+                    if (pageActivity.UserActivityList.Last().CommandName == nameof(Page2ViewModel.NextButton))
+                        nextPage = nameof(Page3ViewModel);
+                    break;
+                case nameof(Page3ViewModel):
+                    if (pageActivity.UserActivityList.Last().CommandName == nameof(Page3ViewModel.NextButton))
+                        nextPage = nameof(Page1ViewModel);
+                    break;
                 default:
                     break;
             }

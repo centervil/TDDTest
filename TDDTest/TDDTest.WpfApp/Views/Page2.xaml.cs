@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TDDTest.WpfApp.Factories;
 
 namespace TDDTest.WpfApp.Views
 {
@@ -23,6 +24,7 @@ namespace TDDTest.WpfApp.Views
         public Page2()
         {
             InitializeComponent();
+            this.DataContext = ViewModelFactory.CreateInstance(this.GetType());
         }
     }
 }

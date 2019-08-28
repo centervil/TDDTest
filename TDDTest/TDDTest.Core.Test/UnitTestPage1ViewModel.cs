@@ -12,7 +12,7 @@ namespace TDDTest.Core.Test
     public class UnitTestPage1ViewModel
     {
         [TestMethod]
-        public void ボタンを押したらPage2に遷移()
+        public void ボタンを押したら遷移()
         {
             //テスト準備
             var NavigationServiceMock = new Mock<INavigationService>();
