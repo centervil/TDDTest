@@ -36,5 +36,14 @@ namespace TDDTest.Core.ViewModel.ViewModelServices
             }
             return nextPage;
         }
+
+        internal static string GetPreviousPageName()
+        {
+            var navigationHistoryRepository = Singleton<NavigationHistoryRepository>.Instance;
+            var previousViewModelName = navigationHistoryRepository.GetPreviousPageActivity().ViewModelName;
+            navigationHistoryRepository.RemoveLast();
+            navigationHistoryRepository.RemoveLast();
+            return previousViewModelName;
+        }
     }
 }

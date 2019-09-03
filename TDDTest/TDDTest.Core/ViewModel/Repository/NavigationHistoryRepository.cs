@@ -26,5 +26,27 @@ namespace TDDTest.Core.ViewModel.Repository
         {
             History.Last().AddPageState(pageState);
         }
+
+        internal void RemoveLast()
+        {
+            int LastIndex = History.Count - 1;
+            if (LastIndex >= 0)
+            {
+                History.RemoveAt(LastIndex);
+            }
+        }
+
+        internal PageActivity GetPreviousPageActivity()
+        {
+            int LastIndex = History.Count - 1;
+            if (LastIndex > 0)
+            {
+                return History.ElementAt(LastIndex - 1);
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
