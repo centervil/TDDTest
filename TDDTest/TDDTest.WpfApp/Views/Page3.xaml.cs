@@ -19,7 +19,7 @@ namespace TDDTest.WpfApp.Views
     /// <summary>
     /// Page3.xaml の相互作用ロジック
     /// </summary>
-    public partial class Page3 : Page
+    public partial class Page3 : PageBase
     {
         public Page3()
         {

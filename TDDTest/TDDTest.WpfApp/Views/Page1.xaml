@@ -10,6 +10,5 @@
 
     <Grid>
         <TextBlock Text="Page1" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <!--<Button Command="{Binding NextButton}" Content="Next" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" Width="90" Height="30"/>-->
     </Grid>
 </local:PageBase>
